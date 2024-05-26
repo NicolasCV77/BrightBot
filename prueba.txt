@@ -30,3 +30,7 @@ GIT_COMMITTER_DATE="2026-05-25T23:57:00" git commit --date="2026-05-25T23:57:00"
 
 # En PowerShell (Windows):
 $env:GIT_COMMITTER_DATE="2026-05-25T23:57:00"; git commit --date="2026-05-25T23:57:00" -m "mensaje del commit"
+
+
+
+HOLALALALLALALAL
