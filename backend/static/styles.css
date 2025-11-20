@@ -1,0 +1,663 @@
+/* ============================================================
+   BRIGHTBOT — ESTILOS GLOBALES (corregido)
+============================================================ */
+
+/* ------------------------------
+   0. Reset & tipografías
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #f0f4f8;
+  color: #0f172a;
+  min-height: 100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Cuando hay slider de fondo → letras blancas */
+body.has-slider,
+body.has-slider *:not(input):not(button):not(.card):not(.auth-card) {
+  color: #ffffff !important;
+}
+
+/* ------------------------------
+   1. Variables de color globales
+------------------------------ */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #1e293b;
+  --bg-light: #f8fafc;
+  --bg-card: #ffffff;
+  --text-muted: #fff;
+  --danger: #dc2626;
+  --chat-bg: rgba(15,23,42,0.92);
+  --chat-shell: rgba(255,255,255,0.06);
+}
+
+/* ------------------------------
+   2. Componentes globales
+------------------------------ */
+
+/* Botones */
+.btn {
+  padding: 11px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.18s ease;
+  display: inline-block;
+  line-height: 1;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.18);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-ghost {
+  background: #e2e8f0;
+  color: #1e293b;
+  border: 1px solid #dbe7ff;
+}
+
+.btn-ghost:hover {
+  background: #cbd5e1;
+}
+
+/* Tarjetas */
+.card {
+  background: var(--bg-card);
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  color: #0f172a !important;
+}
+
+/* Inputs */
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  font-size: 15px;
+  margin-bottom: 12px;
+  transition: 0.15s;
+  color: #0f172a;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+/* Mensaje de error */
+.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  border-left: 4px solid var(--danger);
+  margin-bottom: 14px;
+}
+
+/* ============================================================
+   3. INDEX (Página principal)
+============================================================ */
+
+.index-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.index-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #ffffff !important;
+  margin-bottom: 15px;
+}
+
+.index-subtitle {
+  font-size: 18px;
+  color: #e2e8f0 !important;
+  margin-bottom: 30px;
+}
+
+.index-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   4. LOGIN
+============================================================ */
+
+.auth-wrap {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  color: #0f172a !important;
+}
+
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ============================================================
+   5. DASHBOARD
+============================================================ */
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: var(--secondary);
+  color: #fff;
+  padding: 25px;
+}
+
+.sidebar h3 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  font-weight: 700;
+  color: #fff !important;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: #e2e8f0;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: 0.15s;
+}
+
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 35px;
+}
+
+.dashboard-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #ffffff !important;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ============================================================
+   6. BACKGROUND SLIDER
+============================================================ */
+
+.background-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-slider .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: slideAnimation 18s infinite;
+}
+
+.background-slider .slide:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.background-slider .slide:nth-child(2) {
+  animation-delay: 6s;
+}
+
+.background-slider .slide:nth-child(3) {
+  animation-delay: 12s;
+}
+
+@keyframes slideAnimation {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  33% { opacity: 1; }
+  38% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.background-slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* ============================================================
+   7. LOGIN OSCURO + GLASS EFFECT
+============================================================ */
+
+.login-dark {
+  background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+  color: #fff;
+}
+
+/* Tarjeta estilo glass */
+.login-glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 32px;
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Título login */
+.login-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+/* Botones alineados */
+.login-buttons {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Texto inferior */
+.login-demo {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+  color: #d1d5db;
+}
+
+.login-dark,
+.login-dark * {
+  color: #ffffff !important;
+}
+
+.login-dark input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.login-dark input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.login-dark input:focus {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255,255,255,0.22);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+.login-dark label {
+  color: #ffffff !important;
+}
+
+.login-dark .error {
+  background: rgba(255, 0, 0, 0.12);
+  border-left: 4px solid #ff6b6b;
+  color: #ffd6d6 !important;
+}
+
+.login-dark .btn-ghost {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff !important;
+}
+
+.login-dark .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ============================================================
+   8. CHAT (FIXED, modern & responsive)
+   - fixes the problems in the screenshot: spacing, white gap,
+     misaligned bubbles, button sizes, z-index conflicts.
+============================================================ */
+
+#bot-toggle {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  border: 3px solid rgba(255,255,255,0.9);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+#bot-toggle img { width: 42px; height: 42px; display:block; }
+
+#bot-toggle:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.32); }
+
+/* Chat panel shell */
+#chat-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 100px;
+  width: 380px;
+  max-height: 520px;
+  display: none; /* opened by JS: display:flex */
+  flex-direction: column;
+  z-index: 1250;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #14253d;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.45);
+}
+
+/* Panel header */
+#chat-panel .panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Messages area */
+#chat-panel .messages {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.msg-user {
+  align-self: flex-end;
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px 12px 6px 12px;
+  max-width: 260px;
+}
+
+/* Define common message bubble styles */
+.msg-bubble {
+  max-width: 78%;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.35;
+  border-radius: 14px;
+  word-wrap: break-word;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* USER message (right) */
+.msg-user {
+  align-self: flex-end;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 14px 14px 6px 14px;
+  display: inline-block;
+}
+
+/* BOT message (left) with avatar */
+.msg-bot {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.msg-bot .avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+  border: 2px solid rgba(255,255,255,0.15);
+}
+
+.msg-bot .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* bot content bubble to the right of avatar */
+.msg-bot .bubble {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px 12px 12px 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  max-width: 260px;
+  word-wrap: break-word;
+}
+
+/* small text inside bubble (links etc.) */
+.msg-bot .bubble a {
+  color: #cfe0ff;
+  text-decoration: underline;
+}
+
+/* Recommendations area (under messages) */
+#chat-panel .recommendations {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  padding: 10px 14px;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.01);
+}
+
+/* recommendation buttons */
+#chat-panel .recommendations button {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Input area */
+#chat-panel .input-area {
+  display:flex;
+  gap:8px;
+  padding:12px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+}
+
+/* input field */
+#chat-panel .input-area input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+}
+
+/* input placeholder */
+#chat-panel .input-area input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+/* send button */
+#chat-panel .input-area button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Tiny: ensure messages scroll nicely and not under the header/footer */
+#chat-panel .messages::-webkit-scrollbar {
+  width: 8px;
+}
+#chat-panel .messages::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+}
+
+/* ============================================================
+   Utilities & responsive
+============================================================ */
+
+@media (max-width: 680px) {
+  #chat-panel { right: 12px; left: 12px; width: auto; bottom: 84px; max-height: 60vh; }
+  #bot-toggle { right: 12px; bottom: 12px; }
+  .card { padding: 18px; }
+}
+
+/* small helper to override odd inline styles (if exist) */
+.hidden { display: none !important; }
+
+#recs button {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+.news-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transition: 0.2s ease;
+  width: 100%;       /* ocupa todo el contenedor padre */
+  max-width: 400px;  /* opcional, limita el tamaño máximo */
+  padding: 0;        /* el padding lo ponemos en news-content */
+  box-sizing: border-box;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.news-image {
+  width: 100%;          /* siempre al 100% del contenedor */
+  height: auto;         /* mantiene la proporción */
+  display: block;
+  object-fit: cover;    /* corta si es necesario */
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+/* Ya no necesitamos la clase small con width/height fijos */
+.news-content {
+  padding: 16px;
+}
+
+.news-title {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2b4b;
+}
+
+.news-text {
+  margin: 0 0 12px 0;
+  color: #4c5c74;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.news-link {
+  font-size: 14px;
+  color: #2b6cff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 20px;      /* separación desde arriba */
+  right: 20px;    /* separación desde la derecha */
+  z-index: 100;   /* que quede encima de todo */
+}

@@ -1,0 +1,8 @@
+[
+  {"pregunta": "horario laboratorio sistemas", "respuesta": "Los laboratorios de Ingeniería de Sistemas están abiertos de lunes a viernes de 8:00 a 18:00. Verifica instalaciones del edificio D."},
+  {"pregunta": "proyecto de grado sistemas", "respuesta": "El proceso de proyecto de grado inicia en el semestre 8. Revisa la guía de proyecto en la coordinación de Ingeniería de Sistemas."},
+  {"pregunta": "asignaturas obligatorias sistemas", "respuesta": "Asignaturas obligatorias: Estructuras de Datos, Algoritmos, Sistemas Operativos, Redes, Bases de Datos, Ingeniería de Software."},
+  {"pregunta": "coordinador de sistemas", "respuesta": "El coordinador de la carrera es el Prof. Juan Pérez (correo: juan.perez@universidad.edu)."},
+  {"pregunta": "practicas profesionales sistemas", "respuesta": "Las prácticas profesionales deben gestionarse con la oficina de prácticas y la coordinación. Revisa el cronograma en el portal de tu facultad."},
+  {"pregunta": "repositorios git recomendados", "respuesta": "Se recomiendan repositorios en GitHub y GitLab; para entrega de proyectos usa la plantilla oficial disponible en el repositorio de la facultad."}
+]

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Portal - BrightBot</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+
+  <!-- Fondo global con slider -->
+  <div class="background-slider" aria-hidden="true">
+    <div class="slide" style="background-image: url('/static/personas1.jpg');"></div>
+    <div class="slide" style="background-image: url('/static/personas2.jpg');"></div>
+    <div class="slide" style="background-image: url('/static/personas3.jpg');"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" style="display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid #e6eefc;background:transparent;">
+    <div class="brand" style="display:flex;gap:14px;align-items:center;">
+      <img src="{{ url_for('static', filename='escudo.jpg') }}" alt="Escudo" class="logo" style="width:64px;height:64px;object-fit:cover;border-radius:8px;">
+      <div>
+        <h1 style="font-size:20px;margin-bottom:6px;color:#fff;">Pontificia Universidad Ejemplo</h1>
+        <p style="font-size:13px;color:#fff;margin:0;">Portal Estudiantil — Información y servicios</p>
+      </div>
+    </div>
+
+    <div class="right-actions">
+      {% if user %}
+        <a class="btn btn-primary" href="{{ url_for('dashboard') }}">Mi cuenta ({{ user.name }})</a>
+        <a class="btn btn-ghost" href="{{ url_for('logout') }}" style="margin-left:8px;">Cerrar sesión</a>
+      {% else %}
+        <a class="btn btn-primary" href="{{ url_for('login_get') }}">Iniciar sesión</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Nav simple -->
+  <nav class="nav" style="padding:10px 28px;display:flex;gap:18px;background:transparent;">
+    <a href="#" style="text-decoration:none;color:var(--text-muted);">Inicio</a>
+    <a href="#" style="text-decoration:none;color:var(--text-muted);">Programas</a>
+    <a href="#" style="text-decoration:none;color:var(--text-muted);">Admisiones</a>
+    <a href="#" style="text-decoration:none;color:var(--text-muted);">Investigación</a>
+    <a href="#" style="text-decoration:none;color:var(--text-muted);">Contacto</a>
+  </nav>
+
+  <!-- Main -->
+  <main class="container" style="padding:32px;">
+    <section class="hero" style="display:flex;gap:28px;flex-wrap:wrap;">
+      <div class="left" style="flex:1;min-width:280px;">
+        <h2 class="index-title">Bienvenido al Portal Estudiantil</h2>
+        <p class="index-subtitle">
+          En este espacio encontrarás información sobre matrículas, becas, servicios, noticias y trámites.
+          Usa el asistente para resolver preguntas rápidas.
+        </p>
+
+        <div class="card news-card" style="margin-top:18px; padding:0;">
+          <img src="{{ url_for('static', filename='directora.jpg') }}" 
+              alt="Nueva directora de Ingeniería de Sistemas"
+              class="news-image small">
+
+          <div class="news-content">
+            <h3 class="news-title">Nueva Directora de Ingeniería de Sistemas</h3>
+            <p class="news-text">
+              La Facultad anunció el nombramiento de la nueva directora del programa de Ingeniería de Sistemas.
+              Tiene más de 15 años de experiencia en investigación y gestión académica.
+            </p>
+
+            <a href="#" class="news-link">Leer más →</a>
+          </div>
+        </div>
+
+
+      </div>
+
+      <aside class="right" style="width:320px;display:flex;flex-direction:column;gap:18px;">
+        <div class="card">
+          <h3 style="margin-bottom:8px;">Noticias destacadas</h3>
+          <ul style="color:var(--text-muted);line-height:1.6;">
+            <li>Apertura inscripciones 2025-2</li>
+            <li>Convocatoria becas Ingresa</li>
+            <li>Horarios biblioteca actualizados</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:8px;">Atajos</h3>
+          <ul style="color:var(--text-muted);line-height:1.6;">
+            <li><a href="#">Calendario académico</a></li>
+            <li><a href="#">Soporte TI</a></li>
+            <li><a href="#">Centro de carreras</a></li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer" style="margin-top:28px;text-align:center;color:var(--text-muted);">
+      © 2025 Universidad Ejemplo — Portal no oficial de prueba
+    </footer>
+  </main>
+
+  <!-- Bot toggle -->
+  <div id="bot-toggle" title="Abrir BrightBot" style="position:fixed;right:22px;bottom:22px;z-index:1000;">
+    <img src="{{ url_for('static', filename='bot.png') }}" alt="Bot" style="width:48px;height:48px;border-radius:50%;">
+  </div>
+
+  <!-- Chat panel -->
+  <div id="chat-panel">
+    <div class="panel-header">
+      <strong>BrightBot — Tu guía inteligente en la U</strong>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="recommendations" id="recs"></div>
+
+    <div class="input-area">
+      <input id="chat-input" type="text" placeholder="¿En qué puedo ayudarte?">
+      <button id="send-btn">Enviar</button>
+    </div>
+  </div>
+
+
+<script>
+/* ---------- CONFIG ---------- */
+const API_URL = "/chat";
+const WHOAMI = "/whoami";
+
+/* ---------- ELEMENTOS ---------- */
+const botToggle = document.getElementById("bot-toggle");
+const chatPanel = document.getElementById("chat-panel");
+const messagesDiv = document.getElementById("messages");
+const inputEl = document.getElementById("chat-input");   // coincide con HTML
+const sendBtn = document.getElementById("send-btn");     // coincide con HTML
+const recsDiv = document.getElementById("recs");
+
+/* Opcional: pedir whoami (no usado aquí, pero preparado) */
+fetch(WHOAMI).catch(()=>{});
+
+/* ---------- UI: abrir/cerrar panel ---------- */
+botToggle.addEventListener("click", () => {
+  // alterna display flex/none
+  chatPanel.style.display = chatPanel.style.display === "flex" ? "none" : "flex";
+  if (chatPanel.style.display === "flex") inputEl.focus();
+});
+
+/* ---------- Envío ---------- */
+sendBtn.addEventListener("click", () => {
+  const text = inputEl.value.trim();
+  if (!text) return;
+  sendMessage(text);
+});
+
+inputEl.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    const text = inputEl.value.trim();
+    if (!text) return;
+    sendMessage(text);
+  }
+});
+
+/* ---------- Render helpers ---------- */
+function appendUserMessage(text) {
+  const bubble = document.createElement("div");
+  bubble.className = "msg-bubble msg-user";
+  bubble.textContent = text;
+  messagesDiv.appendChild(bubble);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function appendBotTyping() {
+  const el = document.createElement("div");
+  el.className = "msg-bot typing";
+  el.dataset.typing = "1";
+  const avatar = document.createElement("div");
+  avatar.className = "avatar";
+  avatar.innerHTML = `<img src="/static/bot.png" alt="bot">`;
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.innerHTML = `<em>Buscando respuesta...</em>`;
+  el.appendChild(avatar);
+  el.appendChild(bubble);
+  messagesDiv.appendChild(el);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  return el;
+}
+
+function removeTyping(el) {
+  if (!el) return;
+  if (el.parentNode) el.parentNode.removeChild(el);
+}
+
+function appendBotMessage(text) {
+  // text puede contener HTML seguro (links) — si viene de usuario, escapa
+  const wrapper = document.createElement("div");
+  wrapper.className = "msg-bot";
+
+  const avatar = document.createElement("div");
+  avatar.className = "avatar";
+  avatar.innerHTML = `<img src="/static/bot.png" alt="bot">`;
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.innerHTML = text; // el backend ya devuelve texto simple; si quieres escapar, usa textContent
+
+  wrapper.appendChild(avatar);
+  wrapper.appendChild(bubble);
+  messagesDiv.appendChild(wrapper);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+/* ---------- Recomendaciones ---------- */
+function showRecommendations(list) {
+  recsDiv.innerHTML = "";
+  if (!list || !list.length) return;
+  list.slice(0,3).forEach(q => {
+    const btn = document.createElement("button");
+    btn.className = "btn btn-ghost";
+    btn.textContent = q;
+    btn.addEventListener("click", () => {
+      inputEl.value = q;
+      sendMessage(q);
+    });
+    recsDiv.appendChild(btn);
+  });
+}
+
+/* ---------- sendMessage: CORRECTO para tu backend ---------- */
+async function sendMessage(text) {
+  // 1) agregar mensaje del usuario
+  appendUserMessage(text);
+
+  // 2) limpiar input y mostrar "typing"
+  inputEl.value = "";
+  const typingEl = appendBotTyping();
+
+  try {
+    // 3) enviar usando la clave 'mensaje' que tu backend espera
+    const resp = await fetch(API_URL, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ mensaje: text })
+    });
+
+    // 4) eliminar typing
+    removeTyping(typingEl);
+
+    if (!resp.ok) {
+      appendBotMessage("Error del servidor. Intenta de nuevo.");
+      return;
+    }
+
+    const data = await resp.json();
+
+    // 5) tu backend responde con { found, respuesta, recommendations }
+    //    Aseguramos que usamos 'respuesta' (no 'reply')
+    const botText = data.respuesta || "No encontré respuesta.";
+    appendBotMessage(botText);
+
+    // 6) mostrar recomendaciones si las hay
+    showRecommendations(data.recommendations || []);
+
+  } catch (err) {
+    removeTyping(typingEl);
+    appendBotMessage("No se pudo conectar con el servidor.");
+    console.error("chat error:", err);
+  }
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Iniciar sesión - BrightBot</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body class="login-dark">
+
+  <div class="auth-wrap">
+    <div class="auth-card login-glass">
+      <h2 class="login-title">Iniciar sesión</h2>
+
+      {% if error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+
+      <form method="POST" action="{{ url_for('login_post') }}">
+        <label>Email</label>
+        <input type="email" name="email" value="{{ email or '' }}" required />
+
+        <label>Contraseña</label>
+        <input type="password" name="password" required />
+
+        <div class="login-buttons">
+          <button type="submit" class="btn btn-primary" style="width:100%;">Entrar</button>
+          <a class="btn btn-ghost" style="width:100%;margin-top:8px;text-align:center;" href="{{ url_for('index') }}">Volver</a>
+        </div>
+      </form>
+
+      <p class="login-demo">Usuario ejemplo: nicolas@u.com / 1234</p>
+    </div>
+  </div>
+
+</body>
+</html>

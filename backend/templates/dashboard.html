@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Mi cuenta - BrightBot</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+
+<body>
+
+  <!-- Fondo global con slider -->
+  <div class="background-slider" aria-hidden="true">
+    <div class="slide" style="background-image: url('/static/personas1.jpg');"></div>
+    <div class="slide" style="background-image: url('/static/personas2.jpg');"></div>
+    <div class="slide" style="background-image: url('/static/personas3.jpg');"></div>
+  </div>
+
+  <!-- Layout -->
+  <div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <img src="{{ url_for('static', filename='escudo.jpg') }}" 
+           alt="Escudo"
+           class="sidebar-logo">
+
+      <h3>BrightBot</h3>
+
+      <nav class="sidebar-nav">
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('dashboard') }}">Mi cuenta</a>
+        <a href="#">Mis cursos</a>
+        <a href="#">Soporte</a>
+      </nav>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="dashboard-content">
+
+      <header class="dashboard-header">
+        <div>
+          <h2 class="dashboard-title">Hola, {{ user.name }} 👋</h2>
+        </div>
+
+        <a href="{{ url_for('logout') }}" class="btn btn-ghost logout-btn">Cerrar sesión</a>
+
+      </header>
+
+      <section class="dashboard-grid">
+
+        <div class="card">
+          <h3>Estado académico</h3>
+          <p>Semestre actual: 6</p>
+          <p>Promedio: 4.3</p>
+        </div>
+
+        <div class="card">
+          <h3>Atajos carrera</h3>
+          <ul>
+            <li><a href="#">Guía de proyectos</a></li>
+            <li><a href="#">Horario laboratorio</a></li>
+            <li><a href="#">Coordinador de carrera</a></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Notificaciones</h3>
+          <p>No tienes notificaciones nuevas.</p>
+        </div>
+
+        <div class="card">
+          <h3>Acciones rápidas</h3>
+          <div class="quick-actions">
+            <a class="btn btn-primary" href="#">Solicitar certificado</a>
+            <a class="btn btn-ghost" href="#">Ver horario</a>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- BOT FLOTANTE -->
+  <div id="bot-toggle" class="bot-button">
+    <img src="{{ url_for('static', filename='bot.png') }}" alt="Bot"/>
+  </div>
+
+  <!-- PANEL DEL CHAT -->
+  <!-- PANEL DEL CHAT -->
+<div id="chat-panel" class="chat-panel">
+
+  <div class="panel-header">
+    <strong>BrightBot — Tu guía inteligente en la U</strong>
+  </div>
+
+  <div class="messages" id="messages"></div>
+
+  <div class="recommendations" id="recs"></div>
+
+  <div class="input-area">
+    <input id="chat-input" type="text" placeholder="¿En qué puedo ayudarte?" autocomplete="off">
+    <button id="send-btn" class="btn btn-primary">Enviar</button>
+  </div>
+
+</div>
+
+
+<<script>
+const API_URL = "/chat";
+
+/* Elements */
+const botToggle = document.getElementById("bot-toggle");
+const chatPanel = document.getElementById("chat-panel");
+const messagesDiv = document.getElementById("messages");
+const inputEl = document.getElementById("chat-input");
+const sendBtn = document.getElementById("send-btn");
+const recsDiv = document.getElementById("recs");
+
+/* Abrir/cerrar */
+botToggle.addEventListener("click", () => {
+  chatPanel.style.display = chatPanel.style.display === "flex" ? "none" : "flex";
+  if (chatPanel.style.display === "flex") inputEl.focus();
+});
+
+/* Enviar */
+sendBtn.addEventListener("click", () => {
+  const text = inputEl.value.trim();
+  if (text) sendMessage(text);
+});
+inputEl.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const text = inputEl.value.trim();
+    if (text) sendMessage(text);
+  }
+});
+
+/* Render usuario */
+function appendUserMessage(text) {
+  const bubble = document.createElement("div");
+  bubble.className = "msg-bubble msg-user";
+  bubble.textContent = text;
+  messagesDiv.appendChild(bubble);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+/* Bot typing */
+function appendBotTyping() {
+  const el = document.createElement("div");
+  el.className = "msg-bot typing";
+  el.innerHTML = `
+    <div class="avatar"><img src="/static/bot.png"></div>
+    <div class="bubble"><em>Buscando respuesta...</em></div>
+  `;
+  messagesDiv.appendChild(el);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  return el;
+}
+
+/* Bot mensaje */
+function appendBotMessage(text) {
+  const el = document.createElement("div");
+  el.className = "msg-bot";
+  el.innerHTML = `
+    <div class="avatar"><img src="/static/bot.png"></div>
+    <div class="bubble">${text}</div>
+  `;
+  messagesDiv.appendChild(el);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function showRecommendations(list) {
+  recsDiv.innerHTML = "";
+  if (!list || !list.length) return;
+
+  list.slice(0,3).forEach(q => {
+    const btn = document.createElement("button");
+    btn.className = "btn btn-ghost";
+    btn.textContent = q;
+    btn.onclick = () => {
+      inputEl.value = q;
+      sendMessage(q);
+    };
+    recsDiv.appendChild(btn);
+  });
+}
+
+/* Enviar mensaje */
+async function sendMessage(text) {
+  appendUserMessage(text);
+  inputEl.value = "";
+
+  const loader = appendBotTyping();
+
+  const resp = await fetch(API_URL, {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ mensaje: text })
+  });
+
+  messagesDiv.removeChild(loader);
+
+  const data = await resp.json();
+  appendBotMessage(data.respuesta || "No entendí tu pregunta.");
+  showRecommendations(data.recommendations || []);
+}
+</script>
+
+
+</body>
+</html>
