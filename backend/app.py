@@ -7,7 +7,6 @@ from collections import Counter
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 
 app = Flask(__name__)
-app.secret_key = "CAMBIA_ESTA_LLAVE_POR_ALGO_SEGURO"
 
 # Paths
 BASE_DIR = os.path.dirname(__file__)
