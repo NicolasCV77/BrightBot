@@ -7,6 +7,7 @@ from collections import Counter
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 
 app = Flask(__name__)
+app.secret_key = "123456789"
 
 # Paths
 BASE_DIR = os.path.dirname(__file__)
