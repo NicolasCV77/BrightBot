@@ -82,14 +82,13 @@ def get_top_matches(query, knowledge, n=3, exclude=None):
     for i, item in enumerate(knowledge):
         if i == exclude:
             continue
-
         doc_tokens = set(tokenize(item["pregunta"] + " " + item["respuesta"]))
         score = len(q_tokens & doc_tokens)
-        scores.append((score, item["pregunta"]))
+        scores.append((score, i))  # Cambia aquí: guarda el índice en vez de la pregunta
 
     scores.sort(reverse=True)
-    return [q for _, q in scores[:n]]
-
+    # Regresa los índices de los N mejores matches
+    return [i for _, i in scores[:n]]
 
 # ----------- HISTORIAL Y POPULARIDAD -----------
 history_global = []
@@ -148,38 +147,32 @@ def chat():
     if not pregunta:
         return jsonify({"respuesta": "Escribe algo para poder ayudarte."})
 
+    pregunta = normalize(pregunta)
     history_global.append(pregunta)
     pop_counter.update([pregunta])
 
-    # Si hay usuario loggeado → usar SE + FAQ
     knowledge = (se_faq + faq) if session.get("user") else faq
-
     idx, score = find_best_match(pregunta, knowledge)
 
-    # Se encontró match válido
     if idx is not None and score > 0:
         respuesta = knowledge[idx]["respuesta"]
-
-        # Personalizar
         if session.get("user"):
             nombre = session["user"]["name"]
             respuesta = f"{nombre}, {respuesta}"
-
-        recs = get_top_matches(pregunta, knowledge, exclude=idx)
-
+        rec_indices = get_top_matches(pregunta, knowledge, exclude=idx)
+        recommendations = [knowledge[i].get("preguntaOriginal", knowledge[i]["pregunta"]) for i in rec_indices]
         return jsonify({
             "found": True,
             "respuesta": respuesta,
-            "recommendations": recs[:3]
+            "recommendations": recommendations[:3]
         })
 
-    # No hay match suficiente
-    recs = get_top_matches(pregunta, knowledge)
-
+    rec_indices = get_top_matches(pregunta, knowledge)
+    recommendations = [knowledge[i].get("preguntaOriginal", knowledge[i]["pregunta"]) for i in rec_indices]
     return jsonify({
         "found": False,
         "respuesta": "¿Quizás querías preguntar?",
-        "recommendations": recs[:3]
+        "recommendations": recommendations[:3]
     })
 
 

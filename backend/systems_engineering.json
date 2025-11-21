@@ -1,8 +1,32 @@
 [
-  {"pregunta": "horario laboratorio sistemas", "respuesta": "Los laboratorios de Ingeniería de Sistemas están abiertos de lunes a viernes de 8:00 a 18:00. Verifica instalaciones del edificio D."},
-  {"pregunta": "proyecto de grado sistemas", "respuesta": "El proceso de proyecto de grado inicia en el semestre 8. Revisa la guía de proyecto en la coordinación de Ingeniería de Sistemas."},
-  {"pregunta": "asignaturas obligatorias sistemas", "respuesta": "Asignaturas obligatorias: Estructuras de Datos, Algoritmos, Sistemas Operativos, Redes, Bases de Datos, Ingeniería de Software."},
-  {"pregunta": "coordinador de sistemas", "respuesta": "El coordinador de la carrera es el Prof. Juan Pérez (correo: juan.perez@universidad.edu)."},
-  {"pregunta": "practicas profesionales sistemas", "respuesta": "Las prácticas profesionales deben gestionarse con la oficina de prácticas y la coordinación. Revisa el cronograma en el portal de tu facultad."},
-  {"pregunta": "repositorios git recomendados", "respuesta": "Se recomiendan repositorios en GitHub y GitLab; para entrega de proyectos usa la plantilla oficial disponible en el repositorio de la facultad."}
+  {
+    "pregunta": "horario laboratorio sistemas",
+    "preguntaOriginal": "¿Cuál es el horario del laboratorio de Sistemas?",
+    "respuesta": "Los laboratorios de Ingeniería de Sistemas están abiertos de lunes a viernes de 8:00 a 18:00. Verifica instalaciones y aulas específicas en el edificio de laboratorios."
+  },
+  {
+    "pregunta": "proyecto de grado sistemas",
+    "preguntaOriginal": "¿Cuándo inicia el proyecto de grado en Ingeniería de Sistemas?",
+    "respuesta": "El proceso de proyecto de grado para Ingeniería de Sistemas inicia normalmente en el semestre 8. Consulta la guía oficial de proyectos en la coordinación académica."
+  },
+  {
+    "pregunta": "asignaturas obligatorias sistemas",
+    "preguntaOriginal": "¿Cuáles son las asignaturas obligatorias de Ingeniería de Sistemas?",
+    "respuesta": "Algunas asignaturas obligatorias son: Estructuras de Datos, Algoritmos, Sistemas Operativos, Redes, Bases de Datos e Ingeniería de Software. Consulta el plan de estudios actualizado."
+  },
+  {
+    "pregunta": "coordinador de sistemas",
+    "preguntaOriginal": "¿Quién es el coordinador de Ingeniería de Sistemas?",
+    "respuesta": "El coordinador de la carrera es el profesor Juan Pérez (correo: juan.perez@universidad.edu). Para trámites académicos o asesoría, escríbele directamente o agenda cita en la coordinación."
+  },
+  {
+    "pregunta": "practicas profesionales sistemas",
+    "preguntaOriginal": "¿Cómo se gestionan las prácticas profesionales en Sistemas?",
+    "respuesta": "Las prácticas profesionales se coordinan a través de la oficina de prácticas y la coordinación académica. Revisa el cronograma y requisitos actuales en el portal de tu facultad."
+  },
+  {
+    "pregunta": "repositorios git recomendados",
+    "preguntaOriginal": "¿Cuáles repositorios Git recomiendan en Sistemas?",
+    "respuesta": "Se recomiendan repositorios en plataformas como GitHub y GitLab. Para entregas académicas, utiliza la plantilla oficial y sigue las buenas prácticas recomendadas por la facultad."
+  }
 ]

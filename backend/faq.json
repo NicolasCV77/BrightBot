@@ -1,177 +1,176 @@
 [
   {
-    "pregunta": "hola",
-    "respuesta": "¡Hola! Soy BrightBot, tu guía inteligente en la universidad. ¿En qué puedo ayudarte hoy?",
-    "minPalabras": 1
-  },
-  {
     "pregunta": "buenas",
+    "preguntaOriginal": "¿Buenas?",
     "respuesta": "¡Hola! ¿Cómo estás? Cuéntame, ¿en qué puedo ayudarte?",
     "minPalabras": 1
   },
   {
     "pregunta": "me puedes ayudar",
-    "respuesta": "¡Claro! Estoy aquí para ayudarte con información de matrícula, becas, biblioteca, financiación y más. ¿Qué quieres saber?",
+    "preguntaOriginal": "¿Me puedes ayudar?",
+    "respuesta": "¡Claro! Estoy aquí para ayudarte con información sobre becas, biblioteca, financiación, servicios de campus y más. ¿Qué quieres saber?",
     "minPalabras": 2
   },
   {
     "pregunta": "que puedes hacer",
-    "respuesta": "Puedo ayudarte a encontrar información sobre matrícula, becas, financiación, biblioteca, campus virtual y otros servicios de la Javeriana. ¿Qué necesitas?",
+    "preguntaOriginal": "¿Qué puedes hacer?",
+    "respuesta": "Te ayudo a encontrar información sobre becas, apoyos financieros, biblioteca, campus virtual, servicios estudiantiles y actividades extracurriculares en la Javeriana.",
     "minPalabras": 2
   },
   {
-    "pregunta": "tu que sabes",
-    "respuesta": "Sé bastante sobre los servicios de la universidad: matrícula, becas, apoyos financieros, biblioteca, campus virtual y horarios. ¿Qué quieres consultar?",
-    "minPalabras": 2
-  },
-  {
-    "pregunta": "matrícula",
-    "respuesta": "Para matricularte debes estar a paz y salvo con la universidad y pagar la orden de matrícula dentro del plazo establecido. Revisa el calendario académico en el portal estudiantil.",
-    "minPalabras": 1
-  },
-  {
-    "pregunta": "cuando es la matrícula",
-    "respuesta": "Las fechas de matrícula dependen del semestre. Puedes verlas en el calendario académico publicado en el portal estudiantil.",
-    "minPalabras": 3
-  },
-  {
-    "pregunta": "como pagar la matrícula en cuotas",
-    "respuesta": "La Javeriana ofrece financiación a corto plazo que permite pagar la matrícula en varias cuotas mensuales durante el semestre.",
-    "minPalabras": 3
-  },
-  {
-    "pregunta": "que es la beca ingresa",
-    "respuesta": "La Beca Ingresa puede cubrir hasta el 50% de la matrícula para estudiantes con buen desempeño académico y necesidad económica.",
+    "pregunta": "como solicitar una beca",
+    "preguntaOriginal": "¿Cómo solicitar una beca?",
+    "respuesta": "Para solicitar una beca debes completar el formulario institucional, anexar documentos económicos y cumplir los requisitos académicos establecidos en cada convocatoria.",
     "minPalabras": 3
   },
   {
     "pregunta": "becas por excelencia academica",
-    "respuesta": "Algunas becas por excelencia incluyen la Beca Semestral por Excelencia Académica y la Beca Bachiller Destacado.",
+    "preguntaOriginal": "Becas por excelencia académica",
+    "respuesta": "Las becas por excelencia académica premian el alto rendimiento de los estudiantes y pueden cubrir parcialmente el costo de tu programa. Consulta condiciones en el portal de becas.",
     "minPalabras": 3
   },
   {
     "pregunta": "beca bachiller destacado",
-    "respuesta": "La Beca Bachiller Destacado puede cubrir hasta el 80% de la matrícula para estudiantes admitidos con alto rendimiento académico.",
+    "preguntaOriginal": "Beca Bachiller Destacado",
+    "respuesta": "La beca Bachiller Destacado puede cubrir hasta el 80% de la matrícula para quienes ingresan con excelente desempeño académico en bachillerato.",
     "minPalabras": 3
   },
   {
-    "pregunta": "opciones de financiación",
-    "respuesta": "La Javeriana ofrece financiación con ICETEX, LUMNI, Educación Estrella, préstamos bancarios y financiación a corto plazo.",
+    "pregunta": "que es la beca ingresa",
+    "preguntaOriginal": "¿Qué es la beca Ingresa?",
+    "respuesta": "La Beca Ingresa respalda a estudiantes de algunas facultades y cubre parte de los costos según criterios académicos y económicos.",
+    "minPalabras": 3
+  },
+  {
+    "pregunta": "opciones de financiacion",
+    "preguntaOriginal": "Opciones de financiación",
+    "respuesta": "La Javeriana ofrece financiación interna a corto y largo plazo, además de alianzas con ICETEX, bancos y Educación Estrella para cubrir la carrera.",
     "minPalabras": 2
   },
   {
-    "pregunta": "que es lumni",
-    "respuesta": "LUMNI es una línea de financiación que permite cubrir una parte importante de la carrera con pagos flexibles a largo plazo.",
-    "minPalabras": 3
+    "pregunta": "como pagar la carrera en cuotas",
+    "preguntaOriginal": "¿Cómo pagar la carrera en cuotas?",
+    "respuesta": "Puedes pagar la carrera en cuotas mensuales si solicitas financiación con la universidad o entidades aliadas. Revisa los requisitos y plazos en el portal de apoyo financiero.",
+    "minPalabras": 4
   },
   {
     "pregunta": "que es educacion estrella",
-    "respuesta": "Educación Estrella es una línea de crédito de la Javeriana que permite financiar hasta el 100% de la matrícula.",
+    "preguntaOriginal": "¿Qué es Educación Estrella?",
+    "respuesta": "Educación Estrella es una línea de crédito universitaria que financia hasta el 100% del costo académico según el perfil del estudiante.",
     "minPalabras": 3
   },
   {
     "pregunta": "que es icetex",
-    "respuesta": "ICETEX es una entidad que ofrece créditos educativos para cubrir parte o la totalidad de la matrícula, según la convocatoria.",
-    "minPalabras": 3
-  },
-  {
-    "pregunta": "como pedir una beca",
-    "respuesta": "Para solicitar una beca debes reunir documentos como certificaciones de ingresos, formulario de solicitud, declaración de renta y paz y salvo financiero.",
-    "minPalabras": 3
-  },
-  {
-    "pregunta": "estimulo cruz san pedro claver",
-    "respuesta": "Este estímulo corresponde a un apoyo financiero otorgado una sola vez a estudiantes destacados.",
+    "preguntaOriginal": "¿Qué es ICETEX?",
+    "respuesta": "ICETEX es una entidad que ofrece créditos educativos para universitarios, incluyendo posibilidad de condonación parcial bajo ciertas condiciones.",
     "minPalabras": 3
   },
   {
     "pregunta": "credito condonable",
-    "respuesta": "Algunos créditos del ICETEX pueden ser parcialmente condonables al graduarte, dependiendo del tipo de línea y sus condiciones.",
+    "preguntaOriginal": "Crédito condonable",
+    "respuesta": "Algunos créditos del ICETEX pueden ser condonados parcial o totalmente si cumples con requisitos de graduación y otras condiciones específicas.",
     "minPalabras": 2
   },
   {
-    "pregunta": "horario biblioteca javeriana",
-    "respuesta": "La Biblioteca General abre de lunes a viernes de 6:00 a.m. a 10:00 p.m., sábados de 7:00 a.m. a 7:00 p.m. y domingos/festivos de 8:00 a.m. a 2:00 p.m.",
-    "minPalabras": 3
+    "pregunta": "como pedir historial de prestamos biblioteca",
+    "preguntaOriginal": "¿Cómo pedir historial de préstamos de biblioteca?",
+    "respuesta": "Solicita tu historial contactando a la sección de circulación y préstamo de la biblioteca o accediendo con tu cuenta institucional.",
+    "minPalabras": 4
   },
   {
     "pregunta": "como usar el carne virtual en la biblioteca",
-    "respuesta": "El carné virtual te permite acceder a las bibliotecas y solicitar servicios según las políticas de cada sede.",
+    "preguntaOriginal": "¿Cómo usar el carné virtual en la biblioteca?",
+    "respuesta": "Usa el carné virtual en la entrada y para reservar servicios o préstamos según la política de la sede bibliotecaria.",
     "minPalabras": 4
   },
   {
     "pregunta": "como pedir un libro en prestamo",
-    "respuesta": "Puedes solicitar libros o material audiovisual directamente en mostrador o hacer una reserva desde el sistema de biblioteca.",
+    "preguntaOriginal": "¿Cómo pedir un libro en préstamo?",
+    "respuesta": "Puedes solicitar libros y materiales académicos en el mostrador de la biblioteca o por la plataforma de reservas electrónicas.",
     "minPalabras": 4
   },
   {
     "pregunta": "como pagar una multa de biblioteca",
-    "respuesta": "Debes solicitar el recibo de pago a través del correo de circulación y préstamo.",
+    "preguntaOriginal": "¿Cómo pagar una multa de biblioteca?",
+    "respuesta": "Pide el recibo de pago de multa al correo de circulación y préstamo y realiza el pago en los canales habilitados.",
     "minPalabras": 4
   },
   {
-    "pregunta": "historial de prestamos",
-    "respuesta": "Puedes solicitar tu historial de préstamos contactando a la sección de circulación y préstamo de la biblioteca.",
-    "minPalabras": 2
+    "pregunta": "paz y salvo biblioteca",
+    "preguntaOriginal": "Paz y salvo de biblioteca",
+    "respuesta": "Para obtener paz y salvo, contacta la sección de circulación y préstamo y cumple con la devolución o pago pendiente.",
+    "minPalabras": 3
   },
   {
-    "pregunta": "paz y salvo biblioteca",
-    "respuesta": "Debes contactar al área de circulación y préstamo para solicitar tu paz y salvo.",
+    "pregunta": "horario biblioteca javeriana",
+    "preguntaOriginal": "Horario biblioteca Javeriana",
+    "respuesta": "La biblioteca general abre de lunes a viernes de 6:00 a.m. a 10:00 p.m., sábados de 7:00 a.m. a 7:00 p.m. y domingos/festivos desde 8:00 a.m. hasta 2:00 p.m.",
     "minPalabras": 3
   },
   {
     "pregunta": "como usar el campus virtual",
-    "respuesta": "El campus virtual tiene una sección de ayuda con tutoriales y guías. Si tienes problemas, puedes escribir a soporte en el correo del campus.",
+    "preguntaOriginal": "¿Cómo usar el campus virtual?",
+    "respuesta": "El campus virtual tiene tutoriales y guías en línea. Para soporte, escribe al correo de ayuda del campus.",
     "minPalabras": 3
   },
   {
     "pregunta": "no puedo ingresar al campus virtual",
-    "respuesta": "Puedes revisar guías de ayuda o contactar al equipo de soporte del Campus Virtual por correo.",
+    "preguntaOriginal": "No puedo ingresar al campus virtual",
+    "respuesta": "Revisa las guías o contacta al equipo de soporte. Verifica que tu cuenta institucional esté activa y tu contraseña actualizada.",
     "minPalabras": 4
   },
   {
     "pregunta": "tienda javeriana",
-    "respuesta": "La Tienda Javeriana ofrece artículos institucionales, librería y papelería. Tiene una sede principal en el campus.",
+    "preguntaOriginal": "Tienda Javeriana",
+    "respuesta": "La Tienda Javeriana vende artículos institucionales, libros, papelería y tiene sede principal en el campus.",
     "minPalabras": 2
   },
   {
     "pregunta": "horario tienda javeriana",
-    "respuesta": "La tienda abre de lunes a viernes de 9:00 a.m. a 4:00 p.m.",
-    "minPalabras": 3
-  },
-  {
-    "pregunta": "tienda javeriana express",
-    "respuesta": "Está ubicada en el edificio Emilio Arango, piso 1.",
+    "preguntaOriginal": "Horario Tienda Javeriana",
+    "respuesta": "El horario habitual de la tienda es de lunes a viernes de 9:00 a.m. a 4:00 p.m.",
     "minPalabras": 3
   },
   {
     "pregunta": "domicilios tienda javeriana",
-    "respuesta": "Sí, algunos productos cuentan con servicio a domicilio.",
+    "preguntaOriginal": "Domicilios Tienda Javeriana",
+    "respuesta": "Algunos artículos tienen servicio de domicilio; consulta las opciones disponibles en el sitio web.",
     "minPalabras": 3
   },
   {
     "pregunta": "descuentos tienda javeriana",
-    "respuesta": "Hay descuentos del 10% en librería y 25% en Editorial Javeriana para la comunidad universitaria.",
-    "minPalabras": 3
-  },
-  {
-    "pregunta": "credito icetex aprobado",
-    "respuesta": "Debes revisar el estado del crédito directamente en la plataforma del ICETEX.",
-    "minPalabras": 3
-  },
-  {
-    "pregunta": "no pague matricula",
-    "respuesta": "Si no pagas la matrícula podrías tener restricciones académicas o administrativas.",
+    "preguntaOriginal": "Descuentos Tienda Javeriana",
+    "respuesta": "La comunidad universitaria tiene descuentos del 10% en librería y 25% en Editorial Javeriana.",
     "minPalabras": 3
   },
   {
     "pregunta": "como contactar apoyo financiero",
-    "respuesta": "Puedes contactar la Oficina de Apoyo Financiero a través del portal oficial de la universidad.",
+    "preguntaOriginal": "¿Cómo contactar apoyo financiero?",
+    "respuesta": "Puedes contactar la Oficina de Apoyo Financiero usando el portal oficial, por teléfono, correo o chat institucional.",
     "minPalabras": 3
   },
   {
     "pregunta": "becas posgrado",
-    "respuesta": "Para posgrado hay opciones de financiación con ICETEX, bancos, convenios y financiación directa de la universidad.",
+    "preguntaOriginal": "Becas de posgrado",
+    "respuesta": "Para posgrados hay financiación con ICETEX, bancos, convenios y líneas directas de la universidad.",
     "minPalabras": 2
+  },
+  {
+    "pregunta": "asesoria escritura trabajos javeriana",
+    "preguntaOriginal": "Asesoría en escritura de trabajos Javeriana",
+    "respuesta": "El Centro de Escritura apoya estudiantes en la redacción de trabajos, tesis y ofrece tutorías para mejorar habilidades de escritura.",
+    "minPalabras": 4
+  },
+  {
+    "pregunta": "salas de computo javeriana",
+    "preguntaOriginal": "Salas de cómputo Javeriana",
+    "respuesta": "Existen salas multipropósito con más de 350 computadores que puedes usar cuando no hay clases programadas.",
+    "minPalabras": 3
+  },
+  {
+    "pregunta": "correo institucional javeriana",
+    "preguntaOriginal": "Correo institucional Javeriana",
+    "respuesta": "Como estudiante tienes derecho a una cuenta de correo institucional gratuita, que puedes activar en la web de la universidad.",
+    "minPalabras": 3
   }
 ]
