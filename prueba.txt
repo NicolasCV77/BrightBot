@@ -1,1 +1,22 @@
-Documento de prueba
+Comandos para hacer commit con fecha personalizada
+===================================================
+
+Paso 1 - Crear o modificar el archivo
+--------------------------------------
+(crear/editar el archivo que quieres commitear)
+
+Paso 2 - Agregar al staging
+-----------------------------
+git add prueba.txt
+
+Paso 3 - Commit con fecha personalizada
+-----------------------------------------
+GIT_COMMITTER_DATE="2026-05-22T12:00:00" git commit --date="2026-05-22T12:00:00" -m "mensaje del commit"
+
+Notas:
+- GIT_COMMITTER_DATE  → cambia la fecha del committer
+- --date              → cambia la fecha del author
+- Formato: YYYY-MM-DDTHH:MM:SS
+- Si ya hiciste el commit y quieres cambiarle la fecha, usa amend:
+
+  GIT_COMMITTER_DATE="2026-05-22T12:00:00" git commit --amend --no-edit --date="2026-05-22T12:00:00"
