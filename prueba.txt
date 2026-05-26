@@ -20,3 +20,8 @@ Notas:
 - Si ya hiciste el commit y quieres cambiarle la fecha, usa amend:
 
   GIT_COMMITTER_DATE="2026-05-22T12:00:00" git commit --amend --no-edit --date="2026-05-22T12:00:00"
+
+---
+Ejemplo: 25 de mayo a las 11:57 pm
+------------------------------------
+GIT_COMMITTER_DATE="2026-05-25T23:57:00" git commit --date="2026-05-25T23:57:00" -m "mensaje del commit"
