@@ -24,4 +24,9 @@ Notas:
 ---
 Ejemplo: 25 de mayo a las 11:57 pm
 ------------------------------------
+
+# En Bash (Git Bash / terminal Linux/Mac):
 GIT_COMMITTER_DATE="2026-05-25T23:57:00" git commit --date="2026-05-25T23:57:00" -m "mensaje del commit"
+
+# En PowerShell (Windows):
+$env:GIT_COMMITTER_DATE="2026-05-25T23:57:00"; git commit --date="2026-05-25T23:57:00" -m "mensaje del commit"
